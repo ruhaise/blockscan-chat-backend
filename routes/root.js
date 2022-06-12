@@ -5,7 +5,8 @@ const FormData = require("form-data");
 
 module.exports = async function (fastify, opts) {
   fastify.post("/sendchat", async function (request, reply) {
-    fastify.register(require("@fastify/cors"));
+    reply.header("Access-Control-Allow-Origin", "*");
+    reply.header("Access-Control-Allow-Methods", "POST");
     const { apiKey, addresses, message } = request.body;
 
     const data1 = new FormData();
